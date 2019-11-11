@@ -1,7 +1,203 @@
 "*":
+  "atom-beautify":
+    apex:
+      disabled: true
+    arduino:
+      disabled: true
+    blade:
+      disabled: true
+    cfml:
+      disabled: true
+    clj:
+      disabled: true
+    crystal:
+      disabled: true
+    cs:
+      disabled: true
+    css:
+      beautify_on_save: true
+    d:
+      disabled: true
+    ejs:
+      disabled: true
+    elm:
+      disabled: true
+    erb:
+      disabled: true
+    erlang:
+      disabled: true
+    fortran:
+      disabled: true
+    gherkin:
+      disabled: true
+    glsl:
+      disabled: true
+    gn:
+      disabled: true
+    handlebars:
+      disabled: true
+    haskell:
+      disabled: true
+    html:
+      beautify_on_save: true
+    jade:
+      disabled: true
+    js:
+      beautify_on_save: true
+      indent_size: 2
+    jsx:
+      disabled: true
+    marko:
+      disabled: true
+    mustache:
+      disabled: true
+    nunjucks:
+      disabled: true
+    objectivec:
+      disabled: true
+    ocaml:
+      disabled: true
+    pawn:
+      disabled: true
+    python: {}
+    riot:
+      disabled: true
+    sass:
+      disabled: true
+    scss:
+      disabled: true
+    spacebars:
+      disabled: true
+    svg:
+      disabled: true
+    swig:
+      disabled: true
+    terraform:
+      disabled: true
+    tss:
+      disabled: true
+    tsx:
+      disabled: true
+    twig:
+      disabled: true
+    typescript:
+      beautify_on_save: true
+    ux:
+      disabled: true
+    vala:
+      disabled: true
+    visualforce:
+      disabled: true
+    vue:
+      disabled: true
+    xtemplate:
+      disabled: true
+  "atom-clock":
+    dateFormat: "ddd MMM D H:mm"
+    showOnlyInFullscreen: true
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
+      formatOnType: false
+    "atom-ide-console": {}
+    "atom-ide-diagnostics-ui":
+      showDiagnosticTraces: true
+  "atom-typescript": {}
+  "color-picker":
+    abbreviateValues: true
+    triggerKey: "H"
   core:
+    autoHideMenuBar: true
+    disabledPackages: [
+      "wrap-guide"
+      "language-clojure"
+      "language-csharp"
+      "language-mustache"
+      "language-objective-c"
+      "language-sass"
+      "language-toml"
+      "welcome"
+      "spell-check"
+      "language-rust-bundled"
+      "language-ruby-on-rails"
+      "language-go"
+      "autocomplete-css"
+      "autocomplete-html"
+      "language-ruby"
+      "language-perl"
+      "pigments"
+    ]
+    packagesWithKeymapsDisabled: [
+      "minimap"
+    ]
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "one-dark-syntax"
+    ]
+    useProxySettingsWhenCallingApm: false
+  editor:
+    fontSize: 12
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
   "exception-reporting":
     userId: "d34041e6-b7b7-4ab3-a964-8fc7e73026db"
+  "file-icons": {}
+  "fuzzy-finder":
+    scoringSystem: "fast"
+    useRipGrep: true
+  "ide-typescript": {}
+  "markdown-preview":
+    breakOnSingleNewline: true
+    liveUpdate: false
+  "markdown-writer": {}
+  minimap:
+    absoluteMode: true
+    adjustAbsoluteModeHeight: true
+    displayMinimapOnLeft: true
+    independentMinimapScroll: true
+    moveCursorOnMinimapClick: true
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+    scrollAnimation: true
+  "one-dark-ui": {}
+  "one-light-ui": {}
+  "opened-files":
+    colorStyle: "solid"
+    removeOnClose: true
+  "platformio-ide-terminal":
+    ansiColors:
+      normal:
+        blue: "#005dff"
+      zBright:
+        brightBlue: "#7caeff"
+    core:
+      shell: "/bin/bash"
+    style:
+      theme: "dracula"
+    toggles:
+      autoClose: true
+  "symbols-tree-view":
+    autoHide: true
+    scrollAnimation: false
+  "terminal-plus":
+    core:
+      shell: "/usr/bin/bash"
+    toggles:
+      autoClose: true
+      runInsertedText: false
+  "tree-view":
+    hideIgnoredNames: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
+".gfm.source":
+  editor:
+    tabLength: 4
+".source.yaml":
+  editor:
+    tabLength: 2
