@@ -59,7 +59,8 @@
       disabled: true
     pawn:
       disabled: true
-    python: {}
+    python:
+      beautify_on_save: true
     riot:
       disabled: true
     sass:
@@ -164,8 +165,6 @@
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
     scrollAnimation: true
-  "one-dark-ui": {}
-  "one-light-ui": {}
   "opened-files":
     colorStyle: "solid"
     removeOnClose: true

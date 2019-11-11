@@ -19,3 +19,237 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'.source.python':
+
+  'Single input':
+    'prefix': 'inp'
+    'body': '${1:A} = input()$2'
+
+  'Multiple input':
+    'prefix': 'minp'
+    'body': '${1:A}, ${2:B} = input().split()$3'
+
+  'Multiple sequential input':
+    'prefix': 'msinp'
+    'body': '${1:A} = [input() for _ in range(${2:N})]$3'
+
+  'Multiple input list':
+    'prefix': 'linp'
+    'body': '${1:A} = list(input().split())$3'
+
+  'Single integer input':
+    'prefix': 'iinp'
+    'body': '${1:N} = int(input())$2'
+
+  'Multiple sequential integer input':
+    'prefix': 'msiinp'
+    'body': '${1:A} = [int(input()) for _ in range(${2:N})]$3'
+
+  'Multiple integer input':
+    'prefix': 'miinp'
+    'body': '${1:A}, ${2:B} = map(int, input().split())$3'
+
+  'Multiple integer input list':
+    'prefix': 'liinp'
+    'body': '${1:A} = list(map(int, input().split()))$2'
+
+  'Set Recursion Limit':
+    'prefix': 'srl'
+    'body': """
+    import sys
+    sys.setrecursionlimit(10 ** 7)
+    """
+
+  'Sieve of Eratosthenes':
+    'prefix': 'primes'
+    'body': """
+    def primes(N):
+        p = [False, False] + [True] * (N - 1)
+        for i in range(2, int(N ** 0.5) + 1):
+            if p[i]:
+                for j in range(i * 2, N + 1, i):
+                    p[j] = False
+        return [i for i in range(N + 1) if p[i]]
+    """
+
+  'Prime factors':
+    'prefix': 'prime_factors'
+    'body': """
+    def prime_factors(N):
+        ret = []
+        for p in primes(int(N ** 0.5) + 1):
+            while N % p == 0:
+                ret.append(p)
+                N //= p
+        if N > 1:
+            ret.append(N)
+        return ret
+    """
+
+  'Divisor':
+    'prefix': 'divisor'
+    'body': """
+    def divisor(N):
+        div = []
+        for i in range(1, int(N ** 0.5 + 1)):
+            if N % i == 0:
+                div.append(i)
+                if i * i != N:
+                    div.append(N // i)
+        return sorted(div)
+    """
+
+  'Dijkstra':
+    'prefix': 'Dij'
+    'body': """
+    def dijkstra(v, G):
+        '''
+        v: integer
+        G: 2-d Array ([from][#edge] -> (to, length))
+        ret: 1-d Array (Minimum path from v)
+        '''
+        import heapq
+
+        ret = [10 ** 10] * len(G)
+        ret[v] = 0
+        q = [(ret[i], i) for i in range(len(G))]
+        heapq.heapify(q)
+
+        while len(q):
+            tmpr, u = heapq.heappop(q)
+            if tmpr == ret[u]:
+                for w, l in G[u]:
+                    if ret[w] > ret[u] + l:
+                        ret[w] = ret[u] + l
+                        heapq.heappush(q, (ret[w], w))
+        return ret
+    """
+
+  'Warshall–Floyd':
+    'prefix': 'wf'
+    'body': """
+    def warshall_floyd(G):
+        '''
+        G: N * N Array (Adjacency matrix)
+        ret: N * N Array (Minimum path)
+        '''
+        import copy
+        ret = copy.deepcopy(G)
+        for k in range(N):
+            for i in range(N):
+                for j in range(N):
+                    ret[i][j] = min(ret[i][j], ret[i][k] + ret[k][j])
+        return ret
+    """
+
+  'Bellman-Ford':
+    'prefix': 'bf'
+    'body': """
+    def bellman_ford(v, G):
+        '''
+        v: integer
+        G: 2-d Array ([from][#edge] -> (to, length))
+        ret: 1-d Array (Minimum path from v)
+        '''
+        INF = 10 ** 10
+        ret = [INF] * len(G)
+        ret[v] = 0
+
+        for _ in range(len(G) - 1):
+            for u, g in enumerate(G):
+                for w, l in g:
+                    if not ret[u] == INF and ret[w] > ret[u] + l:
+                        ret[w] = ret[u] + l
+
+        for u, g in enumerate(G):
+            for w, l in g:
+                if not ret[u] == INF and ret[w] > ret[u] + l:
+                    print("A negative-weight cycle: rly={}, dst={}".format(u, w))
+
+        return ret
+    """
+
+  'Edmonds-Karp':
+    'prefix': 'ek'
+    'body': """
+    def edmonds_karp(s, t, C):
+        '''
+        s, t: start, target (integer)
+        C: Array of dict ([from][to] -> length)
+        ret: maximum_flow (integer)
+        '''
+        import copy
+        import collections
+
+        r = copy.deepcopy(c)  # Residual network
+        maxf = 0
+
+        while True:
+            q, found = collections.deque(), False
+            q.append(([S], 10 ** 15))
+            while len(q) > 0 and not found:
+                p, minf = q.popleft()
+                for to, flow in r[p[-1]].items():
+                    if flow == 0:
+                        continue
+                    elif to == T:
+                        p, minf = p + [to], min(flow, minf)
+                        found = True
+                        break
+                    elif not to in p:
+                        q.append((p + [to], min(flow, minf)))
+
+            if not found:
+                break
+
+            for i in range(len(p) - 1):
+                r[p[i]][p[i + 1]] -= minf
+                if p[i] in r[p[i + 1]]:
+                    r[p[i + 1]][p[i]] += minf
+                else:
+                    r[p[i + 1]][p[i]] = minf
+            maxf += minf
+
+        return maxf
+    """
+
+  'class UnionFind':
+    'prefix': 'unionfind'
+    'body': """
+    class UnionFind:
+
+        def __init__(self, n):
+            # parent[x] < 0 means x is root and abs(parent[x]) == size[x]
+            self.parent, self.depth = [-1] * n, [0] * n
+
+        def find(self, x):
+            if self.parent[x] < 0:
+                return x
+            else:
+                self.parent[x] = self.find(self.parent[x])
+                return self.parent[x]
+
+        def isSame(self, x, y):
+            return self.find(x) == self.find(y)
+
+        def unite(self, x, y):
+            if self.isSame(x, y):
+                return
+            x, y = self.find(x), self.find(y)
+
+            if self.depth[x] > self.depth[y]:
+                self.parent[x] += self.parent[y]
+                self.parent[y] = x
+            else:
+                self.parent[y] += self.parent[x]
+                self.parent[x] = y
+                if self.depth[x] == self.depth[y]:
+                    self.depth[y] += 1
+
+        def size(self, x):
+            return - self.parent[self.find(x)]
+
+        def numTree(self):
+            return sum([1 for p in self.parent if p < 0])
+    """
