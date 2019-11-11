@@ -134,7 +134,7 @@
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
-      "one-dark-syntax"
+      "my-one-dark-syntax"
     ]
     useProxySettingsWhenCallingApm: false
   editor:
