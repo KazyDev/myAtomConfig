@@ -41,7 +41,12 @@
 'atom-workspace atom-text-editor:not([mini])':
   'alt-[': 'editor:fold-current-row'
   'alt-]': 'editor:unfold-current-row'
-  'tab' : 'markdown-writer:indent-list-line'
+  'tab': 'markdown-writer:indent-list-line'
+'atom-text-editor':
+  'tab': 'editor:indent'
+'atom-text-editor.autocomplete-active':
+  'tab': 'autocomplete-plus:confirm'
+
 
 # Default Keymaps for Markdown Writer
 # https://atom.io/packages/markdown-writer

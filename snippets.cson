@@ -61,6 +61,19 @@
     sys.setrecursionlimit(10 ** 7)
     """
 
+  'modpower':
+    'prefix': 'modpow'
+    'body': """
+    def modpow(a, b, mod = 10 ** 9 + 7):
+        ret = 1
+        while b > 0:
+            if b % 2 == 1:
+                ret = ret * a % mod
+            a = a * a % mod
+            b //= 2
+        return ret
+    """
+
   'Sieve of Eratosthenes':
     'prefix': 'primes'
     'body': """

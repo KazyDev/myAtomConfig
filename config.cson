@@ -138,7 +138,7 @@
     ]
     useProxySettingsWhenCallingApm: false
   editor:
-    fontSize: 12
+    fontSize: 11
     invisibles: {}
     scrollPastEnd: true
     showIndentGuide: true
@@ -168,6 +168,9 @@
   "opened-files":
     colorStyle: "solid"
     removeOnClose: true
+  "package-generator":
+    createInDevMode: true
+    packageSyntax: "coffeescript"
   "platformio-ide-terminal":
     ansiColors:
       normal:
