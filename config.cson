@@ -44,7 +44,6 @@
       disabled: true
     js:
       beautify_on_save: true
-      indent_size: 2
     jsx:
       disabled: true
     marko:
@@ -103,6 +102,10 @@
     "atom-ide-console": {}
     "atom-ide-diagnostics-ui":
       showDiagnosticTraces: true
+  "atom-package-deps":
+    ignored: [
+      "atom-cfn-lint"
+    ]
   "atom-typescript": {}
   "color-picker":
     abbreviateValues: true
@@ -127,6 +130,7 @@
       "language-ruby"
       "language-perl"
       "pigments"
+      "atom-typescript"
     ]
     packagesWithKeymapsDisabled: [
       "minimap"
@@ -170,7 +174,6 @@
     removeOnClose: true
   "package-generator":
     createInDevMode: true
-    packageSyntax: "coffeescript"
   "platformio-ide-terminal":
     ansiColors:
       normal:
