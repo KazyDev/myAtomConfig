@@ -148,8 +148,6 @@
     showIndentGuide: true
     showInvisibles: true
     tabLength: 4
-  "exception-reporting":
-    userId: "d34041e6-b7b7-4ab3-a964-8fc7e73026db"
   "file-icons": {}
   "fuzzy-finder":
     scoringSystem: "fast"
