@@ -86,6 +86,8 @@
       disabled: true
     vala:
       disabled: true
+    verilog:
+      emacs_script_path: "~/.emacs.d/misc/verilog-init.el"
     visualforce:
       disabled: true
     vue:
@@ -105,6 +107,7 @@
   "atom-package-deps":
     ignored: [
       "atom-cfn-lint"
+      "linter-clang"
     ]
   "atom-typescript": {}
   "color-picker":
@@ -142,7 +145,8 @@
     ]
     useProxySettingsWhenCallingApm: false
   editor:
-    fontSize: 11
+    fontFamily: "Source Code Pro for Powerline, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 12
     invisibles: {}
     scrollPastEnd: true
     showIndentGuide: true
@@ -154,6 +158,8 @@
   "fuzzy-finder":
     scoringSystem: "fast"
     useRipGrep: true
+  "ide-cpp":
+    clangdPath: "/usr/local/opt/llvm/bin/clangd"
   "ide-typescript": {}
   "markdown-preview":
     breakOnSingleNewline: true
@@ -180,8 +186,6 @@
         blue: "#005dff"
       zBright:
         brightBlue: "#7caeff"
-    core:
-      shell: "/bin/bash"
     style:
       theme: "dracula"
     toggles:
@@ -203,6 +207,16 @@
 ".gfm.source":
   editor:
     tabLength: 4
+".html.tcl.text":
+  editor:
+    tabLength: 2
+".source.tcl":
+  editor:
+    tabLength: 2
+".source.verilog":
+  editor:
+    tabLength: 2
+    tabType: "soft"
 ".source.yaml":
   editor:
     tabLength: 2
