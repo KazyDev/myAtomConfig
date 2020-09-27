@@ -61,6 +61,14 @@
     sys.setrecursionlimit(10 ** 7)
     """
 
+  'lcm':
+    'prefix': 'lcm'
+    'body': """
+    def lcm(x, y):
+        import math
+        return (x * y) // math.gcd(x, y)
+    """
+
   'modpower':
     'prefix': 'modpow'
     'body': """
@@ -72,6 +80,45 @@
             a = a * a % mod
             b //= 2
         return ret
+    """
+
+  'modcomb':
+    'prefix': 'modcomb'
+    'body': """
+    def modcomb(n, c, mod=10 ** 9 + 7):
+        if c > n - c:
+            c = n - c
+        u, d = 1, 1
+        for i in range(c):
+            u = u * (n - i) % mod
+            d = d * (i + 1) % mod
+        return u * modpow(d, mod - 2) % mod
+    """
+
+  'FastModComb':
+    'prefix': 'fastmodcomb'
+    'body': """
+    class FastModComb:
+        def __init__(self, n, mod=10 ** 9 + 7):
+            f, self.mod = [1], mod
+            for i in range(1, n + 1):
+                f.append(f[-1] * i % mod)
+            rf = [self.modpow(f[-1], mod - 2)]
+            for i in range(1, n + 1):
+                rf.append(rf[-1] * (n - i + 1) % mod)
+            self.f, self.rf = f, list(reversed(rf))
+
+        def modpow(self, a, b):
+            ret = 1
+            while b > 0:
+                if b % 2 == 1:
+                    ret = ret * a % self.mod
+                a = a * a % self.mod
+                b //= 2
+            return ret
+
+        def modcomb(self, n, c):
+            return self.f[n] * self.rf[c] * self.rf[n - c] % self.mod
     """
 
   'Sieve of Eratosthenes':
@@ -233,15 +280,15 @@
     class UnionFind:
 
         def __init__(self, n):
-            # parent[x] < 0 means x is root and abs(parent[x]) == size[x]
-            self.parent, self.depth = [-1] * n, [0] * n
+            # p[x] < 0 means x is root and abs(p[x]) == size[x]
+            self.p, self.d = [-1] * n, [0] * n  # Parent, Depth
 
         def find(self, x):
-            if self.parent[x] < 0:
+            if self.p[x] < 0:
                 return x
             else:
-                self.parent[x] = self.find(self.parent[x])
-                return self.parent[x]
+                self.p[x] = self.find(self.p[x])
+                return self.p[x]
 
         def isSame(self, x, y):
             return self.find(x) == self.find(y)
@@ -251,18 +298,18 @@
                 return
             x, y = self.find(x), self.find(y)
 
-            if self.depth[x] > self.depth[y]:
-                self.parent[x] += self.parent[y]
-                self.parent[y] = x
+            if self.d[x] > self.d[y]:
+                self.p[x] += self.p[y]
+                self.p[y] = x
             else:
-                self.parent[y] += self.parent[x]
-                self.parent[x] = y
-                if self.depth[x] == self.depth[y]:
-                    self.depth[y] += 1
+                self.p[y] += self.p[x]
+                self.p[x] = y
+                if self.d[x] == self.d[y]:
+                    self.d[y] += 1
 
         def size(self, x):
-            return - self.parent[self.find(x)]
+            return - self.p[self.find(x)]
 
         def numTree(self):
-            return sum([1 for p in self.parent if p < 0])
+            return sum([1 for p in self.p if p < 0])
     """
