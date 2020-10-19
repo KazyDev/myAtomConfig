@@ -60,6 +60,10 @@
       disabled: true
     python:
       beautify_on_save: true
+      ignore: [
+        "E24"
+        "E501"
+      ]
     riot:
       disabled: true
     sass:
@@ -134,6 +138,7 @@
       "language-perl"
       "pigments"
       "atom-typescript"
+      "atom-cfn-lint"
     ]
     packagesWithKeymapsDisabled: [
       "minimap"
@@ -158,6 +163,19 @@
     useRipGrep: true
   "ide-cpp":
     clangdPath: "/usr/local/opt/llvm/bin/clangd"
+  "ide-python":
+    pylsPlugins:
+      pycodestyle:
+        ignore: [
+          "E121"
+          "E123"
+          "E126"
+          "E226"
+          "E24"
+          "E704"
+          "W503"
+          "E501"
+        ]
   "ide-typescript": {}
   "markdown-preview":
     breakOnSingleNewline: true

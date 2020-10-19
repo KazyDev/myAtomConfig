@@ -5,7 +5,7 @@ atom-clock@0.1.18
 atom-css-comb@3.5.1
 atom-html-preview@0.2.6
 atom-ide-ui@0.13.0
-atom-typescript@13.9.2
+atom-typescript@14.0.2
 atomic-emacs@0.15.0
 autocomplete-clang@0.13.1
 busy-signal@2.0.1
@@ -27,6 +27,7 @@ markdown-writer@2.11.7
 minimap@4.29.9
 minimap-highlight-selected@4.6.1
 my-one-dark-syntax@1.8.4
-pigments@0.40.2
+pigments@0.40.6
 platformio-ide-terminal@2.10.0
+react@0.18.0
 symbols-tree-view@0.14.0
