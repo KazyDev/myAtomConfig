@@ -177,6 +177,8 @@
           "E501"
         ]
   "ide-typescript": {}
+  "linter-ui-default":
+    panelHeight: 248
   "markdown-preview":
     breakOnSingleNewline: true
     liveUpdate: false
